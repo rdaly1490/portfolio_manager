@@ -32,6 +32,10 @@ var _link = require('next/dist/lib/link.js');
 
 var _link2 = _interopRequireDefault(_link);
 
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _DashboardMainDisplay = require('../components/DashboardMainDisplay');
 
 var _DashboardMainDisplay2 = _interopRequireDefault(_DashboardMainDisplay);
@@ -64,40 +68,47 @@ var DashboardContainer = function (_Component) {
     }
 
     (0, _createClass3.default)(DashboardContainer, [{
+        key: '_getData',
+        value: function _getData() {
+            _axios2.default.get('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=BTC,USD,EUR&ts=1452680400').then(function (_ref) {
+                var data = _ref.data;
+                return console.log(data);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement('div', {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 14
+                    lineNumber: 20
                 }
             }, _react2.default.createElement('style', { dangerouslySetInnerHTML: { __html: _dashboard2.default }, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 15
+                    lineNumber: 21
                 }
-            }), _react2.default.createElement('div', {
-                __source: {
+            }), _react2.default.createElement('button', { onClick: this._getData, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 16
+                    lineNumber: 22
                 }
-            }, 'Welcome to next.js!'), _react2.default.createElement(_link2.default, { href: '/coin?symbol=btc', __source: {
+            }, 'Get Data'), _react2.default.createElement(_link2.default, { href: '/coin?symbol=btc', __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 17
+                    lineNumber: 23
                 }
             }, _react2.default.createElement('a', {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 17
+                    lineNumber: 23
                 }
             }, 'Check out BTC')), _react2.default.createElement(_DashboardMainDisplay2.default, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 18
+                    lineNumber: 24
                 }
             }), _react2.default.createElement(_Tabs2.default, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 19
+                    lineNumber: 25
                 }
             }));
         }
